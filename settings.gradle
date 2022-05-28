@@ -1,0 +1,3 @@
+
+rootProject.name = "NaverMapEx_2"
+include ':app'

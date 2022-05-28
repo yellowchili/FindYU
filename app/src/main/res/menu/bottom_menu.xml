@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_bar_map"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_map_24"
+        android:title="지도" />
+
+    <item
+        android:id="@+id/action_bar_share"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_person_pin_24"
+        android:title="위치 공유" />
+
+    <item
+        android:id="@+id/action_bar_walk"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_directions_walk_24"
+        android:title="산책로" />
+
+    <item
+        android:id="@+id/action_bar_concert"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_house_24"
+        android:title="공연" />
+
+</menu>
