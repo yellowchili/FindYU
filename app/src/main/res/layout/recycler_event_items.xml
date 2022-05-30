@@ -7,85 +7,76 @@
     android:layout_marginBottom="5dp"
     >
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/event_item_card"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        app:cardUseCompatPadding="true"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#82b3c9"
-        app:strokeWidth="2dp">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/event_main_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="10dp"
+            android:text="메인 장소"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/event_img"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="5dp"
+
+            android:background="#F6F6F6"
+
+            android:src="@drawable/ic_baseline_event_seat_24"
+            />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/event_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:paddingLeft="10dp"
 
-                android:background="#90caf9">
+                android:text="공연 이름"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/event_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="5dp"
-
-                    android:text="공연 이름"
-                    android:textAlignment="center"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/event_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:paddingLeft="10dp"
-
-                    android:text="장소"
-                    android:textSize="13dp" />
-
-                <TextView
-                    android:id="@+id/event_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:paddingLeft="10dp"
-
-                    android:text="날짜"
-                    android:textSize="13dp" />
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/event_img"
+            <TextView
+                android:id="@+id/event_sub_location"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="2dp"
+                android:paddingLeft="10dp"
 
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="20dp"
+                android:text="장소"
+                android:textSize="13dp" />
 
-                android:src="@drawable/ic_baseline_event_seat_24" />
+            <TextView
+                android:id="@+id/event_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="10dp"
 
+                android:text="날짜"
+                android:textSize="13dp" />
 
         </LinearLayout>
 
-
-    </com.google.android.material.card.MaterialCardView>
-
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

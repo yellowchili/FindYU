@@ -63,18 +63,17 @@ public class EventAdapater extends RecyclerView.Adapter<EventAdapater.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private CardView cardView;
-        private TextView eventName, eventDate, eventHall;
+        private TextView eventName, eventDate, eventHall, eventLocation;
         private ImageView eventImg;
         private EventItem item;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            cardView = itemView.findViewById(R.id.event_item_card);
             eventName = itemView.findViewById(R.id.event_name);
             eventDate = itemView.findViewById(R.id.event_date);
-            eventHall = itemView.findViewById(R.id.event_location);
+            eventLocation = itemView.findViewById(R.id.event_main_location);
+            eventHall = itemView.findViewById(R.id.event_sub_location);
             eventImg = itemView.findViewById(R.id.event_img);
 
         }
@@ -82,6 +81,7 @@ public class EventAdapater extends RecyclerView.Adapter<EventAdapater.ViewHolder
         public void onBind(EventItem item) {
             this.item = item;
 
+            eventLocation.setText(item.getLocation1());
             eventHall.setText(item.getLocation2());
             eventName.setText(item.getName());
             eventDate.setText(item.getDate());
