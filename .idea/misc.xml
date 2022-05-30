@@ -36,6 +36,51 @@
         <entry key="..\:/SearchYU/sum/NaverMapEx_2/NaverMapEx_tak/app/src/main/res/layout/activity_road_result.xml" value="0.25364583333333335" />
         <entry key="..\:/SearchYU/sum/NaverMapEx_2/NaverMapEx_tak/app/src/main/res/layout/activity_road_src_search.xml" value="0.25364583333333335" />
         <entry key="..\:/SearchYU/sum/NaverMapEx_2/NaverMapEx_tak/app/src/main/res/layout/activity_search.xml" value="0.2390625" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/baseline_hourglass_empty_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/btn_directions.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic__camera.xml" value="0.117" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_directions_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_directions_bus_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_directions_walk_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_event_seat_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_house_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_insert_photo_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_person_pin_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_place_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_remove_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_camera.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_direction_btn.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_directions.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_launcher_background.xml" value="0.146" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_search.xml" value="0.146" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_search_bar.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/ic_watch.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/drawable/rounded.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/activity_camera_search.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/activity_modify.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/activity_result.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/activity_road.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/activity_road_dst_search.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/activity_road_result.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/activity_road_src_search.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/activity_search.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/fragment_event.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/fragment_map.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/fragment_search.xml" value="0.17916666666666667" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/fragment_shrare.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/fragment_tour.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/recycler_event_items.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/layout/recycler_tour_items.xml" value="0.1359375" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
+        <entry key="..\:/SearchYU_APP/app/src/main/res/menu/camera_menu.xml" value="0.1" />
         <entry key="..\:/Users/chlx1/AndroidStudioProjects/SearchYU_APP/app/src/main/res/layout/progress_ex.xml" value="0.2689969604863222" />
         <entry key="..\:/Users/chlx1/AndroidStudioProjects/SearchYU_APP/app/src/main/res/layout/recycler_event_items.xml" value="0.1" />
       </map>

@@ -4,7 +4,7 @@
         android:id="@+id/action_bar_camera"
         android:enabled="true"
         android:title="촬영"
-        android:icon="@drawable/ic_baseline_photo_camera_24"
+        android:icon="@drawable/ic_camera"
         />
 
     <item
