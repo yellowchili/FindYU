@@ -20,7 +20,26 @@
             android:exported="true" />
         <activity
             android:name=".ResultActivity"
-            android:exported="true" />
+            android:exported="true">
+            <!-- 위치공유 관련 intent filter-->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- setLink()와 전달되는 링크와 동일한 host, path, scheme -->
+                <data
+                    android:host="searchyu.page.link"
+                    android:path="/share"
+                    android:scheme="https" />
+
+                <data
+                    android:host="searchyu.page.link"
+                    android:path="/share"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SearchActivity"
             android:exported="true" />
