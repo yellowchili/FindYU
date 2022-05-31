@@ -5,14 +5,18 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.naver.maps.geometry.LatLng;
-import com.naver.maps.geometry.LatLngBounds;
 import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
@@ -33,6 +37,7 @@ public class ResultActivity extends AppCompatActivity implements OnMapReadyCallb
     private String user_input; //searchFragment에서 사용자가 입력한 값
     private int[] place; // json에서 읽어온 좌표
     private JsonConverter jc;
+    private double[] cord_deeplink = new double[2]; //딥링크로 받은 현재위치 위도,경도
 
     private double latitude = 35.83609; // 위도
     private double longitude = 128.75290; // 경도
@@ -42,6 +47,10 @@ public class ResultActivity extends AppCompatActivity implements OnMapReadyCallb
 
     private CameraPosition cameraPosition;
     private Marker marker;
+    private String path; //json 파일 경로
+    private boolean isDeepLink = false; // deeplink인지 아닌지 판별
+    private static final String TAG = "ResultActivity"; //Logcat Tag
+    private String strlat, strlon; //test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,20 +67,25 @@ public class ResultActivity extends AppCompatActivity implements OnMapReadyCallb
         exit_btn = findViewById(R.id.exit_button);
         dst_btn = findViewById(R.id.dst_button);
 
-        //이전화면(SearchActivity)에서 유저입력값 받아오기
-        Intent connect = getIntent();
-        user_input = connect.getStringExtra("user_input");
-        search.setText(user_input); //유저 입력결과 위에 표시
-
         // 네이버 지도 관련 설정
         mapView = findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
-        // json에서 검색지 좌표 읽어오기
-        String path = "local/test.json";
-        jc = new JsonConverter(ResultActivity.this, path);
-        place = jc.strToArray();
+        Intent connect = getIntent();
+
+        handleDeepLink(); // 딥링크 수신
+
+        if (isDeepLink == false) {
+            //이전화면(SearchActivity)에서 유저입력값 받아오기
+            user_input = connect.getStringExtra("user_input");
+            if (user_input != null) {search.setText(user_input);} //유저 입력결과 위에 표시
+
+            // json에서 검색지 좌표 읽어오기
+            path = "local/test.json";
+            jc = new JsonConverter(ResultActivity.this, path);
+            place = jc.strToArray();
+        }
 
         // 유저가 검색결과창에서 다시 검색한 경우
         if(connect.getStringExtra("new_user_input") != null) {
@@ -131,18 +145,47 @@ public class ResultActivity extends AppCompatActivity implements OnMapReadyCallb
 
     }
 
+    // 딥링크 수신
+    private void handleDeepLink() {
+        FirebaseDynamicLinks.getInstance()
+                .getDynamicLink(getIntent())
+                .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+                    @Override
+                    public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
+                        // Get deep link from result (may be null if no link is found)
+                        Uri deepLink = null;
+                        try {
+                            if (pendingDynamicLinkData != null) {
+                                deepLink = pendingDynamicLinkData.getLink();
+                                Log.d(TAG, deepLink.toString()); // debug
+                                isDeepLink = true;
+
+                                strlat = deepLink.getQueryParameter("lat");
+                                strlon = deepLink.getQueryParameter("lon");
+
+                                double tmp = Double.parseDouble(strlat);
+                                //cord_deeplink = new double[2];
+                                cord_deeplink[0] = tmp;
+                                tmp = Double.parseDouble(strlon);
+                                cord_deeplink[1] = tmp;
+                            }
+                        }
+                        catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                })
+                .addOnFailureListener(this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "getDynamicLink:onFailure", e);
+                    }
+                });
+    }
+
     // NaverMap 객체가 준비되면 호출되는 메소드
     @Override
     public void onMapReady (@NonNull NaverMap naverMap){
-        // default 카메라 설정
-        cameraPosition = new CameraPosition(
-                new LatLng(latitude, longitude),
-                defaultZoom,
-                defaultTilt,
-                defaultBearing
-        );
-
-        naverMap.setCameraPosition(cameraPosition);
 
         // 네이버 지도 관련 ui 설정
         uiSettings = naverMap.getUiSettings();
@@ -151,10 +194,10 @@ public class ResultActivity extends AppCompatActivity implements OnMapReadyCallb
         uiSettings.setRotateGesturesEnabled(true); // 회전 제스처 false -> true 변경
         uiSettings.setLocationButtonEnabled(false); // 기본 로케이션 버튼 해제
 
-        // 카메라 영역 범위 제한
-        LatLng southWest = new LatLng(35.822000, 128.746500); //서남단
-        LatLng northEast = new LatLng(35.838300, 128.764800); //동북단
-        naverMap.setExtent(new LatLngBounds(southWest, northEast));
+        // 카메라 영역 범위 제한 : 영남대에서 테스트할때 주석 해제
+        //LatLng southWest = new LatLng(35.822000, 128.746500); //서남단
+        //LatLng northEast = new LatLng(35.838300, 128.764800); //동북단
+        //naverMap.setExtent(new LatLngBounds(southWest, northEast));
 
         //zoom 범위 제한
         naverMap.setMinZoom(14.0); //최소
@@ -171,13 +214,41 @@ public class ResultActivity extends AppCompatActivity implements OnMapReadyCallb
         path.setMap(naverMap);
         path.setWidth(1);
 
-        //(0,0)좌표의 위도경도
-        double startfindy = 35.822000 + 0.016300 - (0.016300/div_ns/2);
-        double startfindx = 128.746500 + (0.018300/div_ew/2);
-        LatLng yuCord = (new LatLng(startfindy - place[1]*0.016300/div_ns, startfindx + place[0]*0.018300/div_ew));
-        marker = new Marker();
-        marker.setPosition(yuCord);
-        marker.setMap(naverMap); // 좌표 상 장소를 마커로 표시
+        if(isDeepLink) { //좌표를 딥링크로 받은 경우
+            LatLng yuCord = (new LatLng(cord_deeplink[0], cord_deeplink[1]));
+            marker = new Marker();
+            marker.setPosition(yuCord);
+            marker.setMap(naverMap); // 좌표 상 장소를 마커로 표시
+
+            // 마커가 중앙에 오게 카메라 위치 조절
+            cameraPosition = new CameraPosition(
+                    yuCord,
+                    defaultZoom,
+                    defaultTilt,
+                    defaultBearing
+            );
+            naverMap.setCameraPosition(cameraPosition);
+
+        }
+        else { // 좌표를 서버에서 받은 경우
+            //(0,0)좌표의 위도경도
+            double startfindy = 35.822000 + 0.016300 - (0.016300/div_ns/2);
+            double startfindx = 128.746500 + (0.018300/div_ew/2);
+            LatLng yuCord = (new LatLng(startfindy - place[1]*0.016300/div_ns, startfindx + place[0]*0.018300/div_ew));
+            marker = new Marker();
+            marker.setPosition(yuCord);
+            marker.setMap(naverMap); // 좌표 상 장소를 마커로 표시
+
+            // 마커가 중앙에 오게 카메라 위치 조절
+            cameraPosition = new CameraPosition(
+                    yuCord,
+                    defaultZoom,
+                    defaultTilt,
+                    defaultBearing
+            );
+            naverMap.setCameraPosition(cameraPosition);
+        }
+
     }
 
     public List<LatLng> drawGrid() {
