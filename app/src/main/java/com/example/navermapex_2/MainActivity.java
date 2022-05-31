@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.e("onCreate","ENTER");
 
+        // tak gitHub test
+
         //액션바 제거
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
