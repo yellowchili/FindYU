@@ -42,7 +42,7 @@ public class SearchActivity extends AppCompatActivity {
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                user_input = search.getText().toString(); //검색창에 입력한 내용
+                user_input = String.valueOf(search.getText()); //검색창에 입력한 내용
                 if(!(user_input == null || user_input.isEmpty())) { //입력값이 공백일 때 화면전환x
                     // 검색결과 화면으로 이동
                     Intent intent = new Intent(SearchActivity.this, ResultActivity.class);

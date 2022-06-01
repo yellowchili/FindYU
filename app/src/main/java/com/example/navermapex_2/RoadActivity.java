@@ -258,7 +258,7 @@ public class RoadActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         Address address = addresses.get(0);
-        return address.getAddressLine(0).toString()+"\n";
+        return String.valueOf(address.getAddressLine(0))+"\n";
     }
 
 

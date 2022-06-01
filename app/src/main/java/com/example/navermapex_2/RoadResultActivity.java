@@ -281,7 +281,7 @@ public class RoadResultActivity extends AppCompatActivity implements OnMapReadyC
         }
 
         Address address = addresses.get(0);
-        return address.getAddressLine(0).toString()+"\n";
+        return String.valueOf(address.getAddressLine(0))+"\n";
     }
 
     //GPS 활성화를 위한 메소드들

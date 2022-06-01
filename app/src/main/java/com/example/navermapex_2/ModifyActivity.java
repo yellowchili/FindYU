@@ -46,7 +46,7 @@ public class ModifyActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //입력값이 공백일 때 이동x
 
-                user_input = search.getText().toString(); //검색창에 입력한 내용
+                user_input = String.valueOf(search.getText()); //검색창에 입력한 내용
                 // 검색결과 화면으로 이동
                 Intent intent = new Intent(ModifyActivity.this, ResultActivity.class);
                 intent.putExtra("new_user_input", user_input);

@@ -47,7 +47,7 @@ public class RoadDstSearchActivity extends AppCompatActivity {
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                user_input = search.getText().toString(); //검색창에 입력한 내용
+                user_input = String.valueOf(search.getText()); //검색창에 입력한 내용
                 if(!(user_input == null || user_input.isEmpty())) { //입력값이 공백일 때 화면전환x
                     // 서버에 유저가 입력한 목적지의 좌표 요청 -> json 파일 다운/갱신
 
